@@ -1,6 +1,11 @@
 const myLibrary = [];
 
-function book() {}
+function Book(title, author, page, read) {
+  this.title = title;
+  this.author = author;
+  this.page = page;
+  this.read = read;
+}
 
 function addBookToLibrary() {
   const title = document.querySelector("#title").value;
@@ -11,10 +16,8 @@ function addBookToLibrary() {
 
   const read = document.querySelector(".readCheck:checked").value;
 
-  console.log(title);
-  console.log(author);
-  console.log(page);
-  console.log(read);
+  const newBook = new Book(title, author, page, read);
+  myLibrary.push(newBook);
 }
 
 const submit = document.querySelector("#submit");
@@ -23,4 +26,5 @@ submit.addEventListener("click", () => {
   console.log("You have clicked submit.");
   addBookToLibrary();
   event.preventDefault();
+  console.log(myLibrary);
 });
