@@ -42,6 +42,7 @@ function cardDisplay(library) {
       const authorDisplay = document.createElement("p");
       const pageDisplay = document.createElement("p");
       const readDisplay = document.createElement("p");
+      readDisplay.className = "readDisplay";
       const readButton = document.createElement("button");
 
       titleDisplay.textContent = `Title: ${myLibrary[i].title}`;
@@ -54,17 +55,7 @@ function cardDisplay(library) {
       }
       readButton.textContent = `Read`;
 
-      readButton.addEventListener("click", (event) => {
-        console.log(i);
-        if (myLibrary[i].read === true) {
-          myLibrary[i].read = false;
-        } else if (myLibrary[i].read === false) {
-          myLibrary[i].read = true;
-        }
-        console.log(myLibrary[i].read);
-        console.log(myLibrary[i]);
-        cardDisplay(myLibrary);
-      });
+      readButton.addEventListener("click", onClickReadButton);
 
       libraryCard.appendChild(titleDisplay);
       libraryCard.appendChild(authorDisplay);
@@ -86,3 +77,28 @@ submit.addEventListener("click", (event) => {
   console.log(myLibrary);
   cardDisplay(myLibrary);
 });
+
+function onClickReadButton(event) {
+  const libraryCard = event.target.parentElement;
+  const readDisplay = libraryCard.querySelector(".readDisplay");
+  const bookId = Number(libraryCard.getAttribute("data-id"));
+  myLibrary[bookId].read = !myLibrary[bookId].read;
+  readDisplay.textContent = myLibrary[bookId].read ? "Read: Yes" : "Read: No";
+
+  // console.log(myLibrary[bookId]);
+  // cardDisplay(myLibrary);
+  /* console.log(i);
+  if (myLibrary[i].read === true) {
+    myLibrary[i].read = false;
+  } else if (myLibrary[i].read === false) {
+    myLibrary[i].read = true;
+  }
+  console.log(myLibrary[i].read);
+  console.log(myLibrary[i]);
+  cardDisplay(myLibrary);
+  */
+}
+
+function renderCard(book) {
+  const libraryContainer = document.querySelector("#libraryContainer");
+}
