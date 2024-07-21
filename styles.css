@@ -66,9 +66,43 @@ body {
 
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
+
+  height: 100vh;
 }
 
 #sidebar {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+
+  justify-items: center;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+form .text_input_group {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 20px;
+}
+
+form .select_input input[type="radio"] {
+  margin: 10px 3px 3px 0px;
+}
+
+form input[type="submit"] {
+  margin-top: 15px;
+
+  padding: 10px 0px;
+
+  font-weight: bold;
 }
 
 #libraryContainer {

@@ -1,5 +1,10 @@
-const myLibrary = [];
 let bookIdentifier = 0;
+
+const myLibrary = [
+  new Book("Test title", "Test author", "100", false),
+  new Book("Title", "Author", "201", true),
+  new Book("Last title", "Last author", "2183", false),
+];
 
 function generateBookId() {
   return bookIdentifier++;
@@ -137,3 +142,5 @@ function getBookIndex(bookId) {
 function renderCard(book) {
   const libraryContainer = document.querySelector("#libraryContainer");
 }
+
+renderLibrary(myLibrary);
