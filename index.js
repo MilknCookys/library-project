@@ -55,6 +55,8 @@ function renderLibrary(library) {
       const pageDisplay = document.createElement("p");
       const readDisplay = document.createElement("p");
       readDisplay.className = "readDisplay";
+      const buttonContainer = document.createElement("div");
+      buttonContainer.className = "buttonContainer";
       const readButton = document.createElement("button");
       const removeButton = document.createElement("button");
 
@@ -77,8 +79,9 @@ function renderLibrary(library) {
       libraryCard.appendChild(authorDisplay);
       libraryCard.appendChild(pageDisplay);
       libraryCard.appendChild(readDisplay);
-      libraryCard.appendChild(readButton);
-      libraryCard.appendChild(removeButton);
+      libraryCard.appendChild(buttonContainer);
+      buttonContainer.appendChild(readButton);
+      buttonContainer.appendChild(removeButton);
 
       myLibrary[i].displayed = true;
     }
@@ -96,7 +99,7 @@ submit.addEventListener("click", (event) => {
 });
 
 function onClickReadButton(event) {
-  const libraryCard = event.target.parentElement;
+  const libraryCard = event.target.parentElement.parentElement;
   const readDisplay = libraryCard.querySelector(".readDisplay");
   const bookId = Number(libraryCard.getAttribute("data-id"));
   const bookIndex = getBookIndex(bookId);
@@ -109,7 +112,7 @@ function onClickReadButton(event) {
 }
 
 function onClickRemoveButton(event) {
-  const libraryCard = event.target.parentElement;
+  const libraryCard = event.target.parentElement.parentElement;
   const bookId = Number(libraryCard.getAttribute("data-id"));
 
   removeFromLibrary(bookId);
