@@ -1,26 +1,45 @@
 let bookIdentifier = 0;
+const myLibrary = [];
 
-const myLibrary = [
-  new Book("Test title", "Test author", "100", false),
-  new Book("Title", "Author", "201", true),
-  new Book("Last title", "Last author", "2183", false),
-];
+// Preloaded books for testing
+// myLibrary = [
+//   new Book("Test title", "Test author", "100", false),
+//   new Book("Title", "Author", "201", true),
+//   new Book("Last title", "Last author", "2183", false),
+// ];
 
+// Stays as function
 function generateBookId() {
   return bookIdentifier++;
 }
 
-function Book(title, author, page, read) {
-  this.id = generateBookId();
+// function Book(title, author, page, read) {
+//   this.id = generateBookId();
 
-  this.title = title;
-  this.author = author;
-  this.page = page;
-  this.read = read;
+//   this.title = title;
+//   this.author = author;
+//   this.page = page;
+//   this.read = read;
 
-  this.displayed = false;
+//   this.displayed = false;
+// }
+
+// ^ Converted to class Below
+
+class Book {
+  constructor(title, author, page, read) {
+    this.id = generateBookId();
+
+    this.title = title;
+    this.author = author;
+    this.page = page;
+    this.read = read;
+
+    this.displayed = false;
+  }
 }
 
+// Stays as function
 function addBookToLibrary() {
   const title = document.querySelector("#title").value;
 
@@ -40,6 +59,7 @@ function addBookToLibrary() {
   form.reset();
 }
 
+// I think even this stays as a function... its not constructing anything
 function renderLibrary(library) {
   const libraryContainer = document.querySelector("#libraryContainer");
   for (let i = 0; i < myLibrary.length; i++) {
@@ -120,6 +140,7 @@ function onClickRemoveButton(event) {
   libraryCard.remove();
 }
 
+// Stays as function
 function removeFromLibrary(bookId) {
   if (getBookIndex(bookId) !== -1) {
     myLibrary.splice(getBookIndex(bookId), 1);
@@ -132,6 +153,8 @@ function removeFromLibrary(bookId) {
  * @param {number} bookId The book id of the sought book.
  * @return {number} the index of the book with the specified book id in the library or -1 if no matching book is found.
  */
+
+// Stays as function
 function getBookIndex(bookId) {
   for (i = 0; i < myLibrary.length; i++) {
     if (myLibrary[i].id === bookId) {
@@ -142,6 +165,7 @@ function getBookIndex(bookId) {
   return -1;
 }
 
+// Stays as function
 function renderCard(book) {
   const libraryContainer = document.querySelector("#libraryContainer");
 }
